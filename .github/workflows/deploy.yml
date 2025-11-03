@@ -1,4 +1,4 @@
-name: Deploy taco shop
+name: Deploy Assembly Endgame
 
 on:
   push:
