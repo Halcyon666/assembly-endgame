@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy assembly endgame
+    name: Deploy Chef Claude
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,12 +19,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 22.19.0
-          cache: 'pnpm'
+          cache: "pnpm"
       - name: Install dependencies
         run: |
           echo ${{ github.workspace }}  # 输出工作区上下文路径，就是工程路径
           pnpm install --frozen-lockfile
-      - name: Build assembly endgame
+      - name: Build Chef Claude
         run: |
           pnpm build
 
@@ -36,6 +36,6 @@ jobs:
           github_token: ${{ secrets.SECRET_TOKEN }}
           # Build output to publish to the `gh-pages` branch:
           publish_dir: ./dist # 文档打包产物的目录名就是build
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
           commit_message: ${{ github.event.head_commit.message }}
